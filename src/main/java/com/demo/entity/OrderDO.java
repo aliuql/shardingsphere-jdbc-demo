@@ -1,6 +1,5 @@
 package com.demo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Builder;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
 @TableName("t_order")
 public class OrderDO {
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     /**
