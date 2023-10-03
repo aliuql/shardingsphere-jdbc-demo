@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @MapperScan("com.demo.mapper")
 @SpringBootApplication
-public class ShardingJdbcDemoApplication {
+public class ShardingsphereJdbcDemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ShardingJdbcDemoApplication.class, args);
+        SpringApplication.run(ShardingsphereJdbcDemoApplication.class, args);
     }
 }
