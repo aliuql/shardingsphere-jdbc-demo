@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: shardingsphere-jdbc-demo
+  shardingsphere:
+    props:
+      sql-show: true
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://mysql.demo:3306/shop_order_0?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false
+        username: root
+        password: 123456
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://mysql.demo:3306/shop_order_1?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false
+        username: root
+        password: 123456
+    rules:
+      sharding:
+        tables:
+          t_order:
+            actual-data-nodes: ds0.t_order_$->{0..3},ds1.t_order_$->{4..7}
+            database-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: alg-db-shard-user-id
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: alg-table-shard-user-id
+            key-generate-strategy:
+              column: id
+              key-generator-name: alg-snowflake
+        sharding-algorithms:
+          alg-db-shard-user-id:
+            type: INLINE
+            props:
+              algorithm-expression: ds$->{(user_id % 8).intdiv(8.intdiv(2))}
+          alg-table-shard-user-id:
+            type: INLINE
+            props:
+              algorithm-expression: t_order_$->{user_id % 8}
+        key-generators:
+          alg-snowflake:
+            type: SNOWFLAKE
