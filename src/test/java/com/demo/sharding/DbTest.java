@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @SpringBootTest(classes = ShardingsphereJdbcDemoApplication.class)
 @RunWith(SpringRunner.class)
@@ -23,17 +22,13 @@ public class DbTest {
 
     @Test
     public void testSaveOrder() {
-        for (int i = 0; i < 16; i++) {
-            OrderDO orderDO = OrderDO.builder()
-                    .orderNo("20231002010101")
-                    .status("NEW")
-                    .amount(new BigDecimal("100.02"))
-                    .userId((long)i)
-                    .nickName("aliuql")
-                    .createTime(LocalDateTime.now())
-                    .updateTime(LocalDateTime.now())
-                    .build();
-            orderMapper.insert(orderDO);
-        }
+        OrderDO orderDO = OrderDO.builder()
+                .orderNo("20231002010101")
+                .status("NEW")
+                .amount(new BigDecimal("100.02"))
+                .userId((long) 15)
+                .nickName("aliuql")
+                .build();
+        orderMapper.insert(orderDO);
     }
 }
