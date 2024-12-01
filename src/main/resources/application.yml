@@ -12,15 +12,15 @@ spring:
       ds0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://dusp.mysql:3306/shop_order_0?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false
-        username: root
-        password: 123456
+        jdbc-url: jdbc:mysql://mysql.midware.com:33306/dusp0?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&sslMode=required
+        username: dusp
+        password: Abcd@1234
       ds1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://dusp.mysql:3306/shop_order_1?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&useSSL=false
-        username: root
-        password: 123456
+        jdbc-url: jdbc:mysql://mysql.midware.com:33306/dusp1?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&sslMode=required
+        username: dusp
+        password: Abcd@1234
     rules:
       sharding:
         tables:

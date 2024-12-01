@@ -1,6 +1,6 @@
 package com.demo.sharding;
 
-import com.demo.ShardingsphereJdbcDemoApplication;
+import com.demo.ShardingJdbcDemo;
 import com.demo.entity.OrderDO;
 import com.demo.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 
-@SpringBootTest(classes = ShardingsphereJdbcDemoApplication.class)
+@SpringBootTest(classes = ShardingJdbcDemo.class)
 @RunWith(SpringRunner.class)
 @Slf4j
 public class DbTest {
